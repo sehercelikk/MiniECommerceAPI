@@ -6,14 +6,16 @@ namespace MiniECommerce.Infrastructure.Context;
 
 public class ETicaretContext : DbContext
 {
-    public ETicaretContext(DbContextOptions<ETicaretContext> options) : base(options)
+    public ETicaretContext(DbContextOptions options) : base(options)
     {
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
+      
         modelBuilder.ETicaretInfo();
+
+        base.OnModelCreating(modelBuilder);
     }
 
     public DbSet<Category> Categories { get; set; }

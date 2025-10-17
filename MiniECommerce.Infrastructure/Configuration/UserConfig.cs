@@ -8,6 +8,15 @@ public class UserConfig : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(a => a.Id).HasName("Pk_User_Id");
+        builder.Property(a => a.UserName).IsRequired().HasMaxLength(50);
+        builder.Property(a => a.Role).IsRequired();
+        builder.Property(a => a.Email).IsRequired();
+        builder.Property(a => a.PasswordHash).IsRequired();
+
+        builder.HasMany(a => a.Orders)
+            .WithOne(b => b.User)
+            .HasForeignKey(a => a.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

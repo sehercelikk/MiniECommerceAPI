@@ -1,18 +1,20 @@
 using Microsoft.EntityFrameworkCore;
 using MiniECommerce.Application.AutoMapper;
+using MiniECommerce.Application.IOC;
 using MiniECommerce.Infrastructure.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+
+
+builder.Services.AddDbContext<ETicaretContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+builder.Services.AddAutoMapper(typeof(ETicaretProfile).Assembly);
 builder.Services.AddControllers();
-
-builder.Services.AddDbContext<ETicaretContext>(opt=>
-opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-builder.Services.AddAutoMapper(typeof(ETicaretProfile));
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
