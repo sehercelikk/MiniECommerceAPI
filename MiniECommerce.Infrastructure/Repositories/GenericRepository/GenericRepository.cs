@@ -1,14 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MiniECommerce.Domain.Abstract;
+using MiniECommerce.Infrastructure.Context;
 using System.Linq.Expressions;
 
 namespace MiniECommerce.Infrastructure.Repositories.GenericRepository;
 
 public class GenericRepository<T> : IGenericRepository<T> where T: class, IEntity, new()
 {
-    private readonly DbContext _context;
+    private readonly ETicaretContext _context;
 
-    public GenericRepository(DbContext context)
+    public GenericRepository(ETicaretContext context)
     {
         _context = context;
     }

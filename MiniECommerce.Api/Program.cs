@@ -1,6 +1,8 @@
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using MiniECommerce.Application.AddDependenciesScoped;
 using MiniECommerce.Application.AutoMapper;
-
+using MiniECommerce.Application.Dtos.CategoryDtos;
 using MiniECommerce.Infrastructure.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +16,15 @@ builder.Services.AddDbContext<ETicaretContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddAutoMapper(typeof(ETicaretProfile).Assembly);
+
+
+builder.Services.AddDependenciesScoped();
+
 builder.Services.AddControllers();
+
+builder.Services
+    .AddValidatorsFromAssembly(typeof(CreateCategoryDto).Assembly);
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

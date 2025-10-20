@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Azure;
 using MiniECommerce.Application.Dtos.CategoryDtos;
 using MiniECommerce.Application.Dtos.OrderDtos;
 using MiniECommerce.Application.Dtos.ProductDtos;
@@ -26,5 +27,11 @@ public class ETicaretProfile : Profile
 
         CreateMap<OrderItem, OrderDetailResponseDto>().ReverseMap();
         CreateMap<OrderItem, OrderItemDto>().ReverseMap();
+
+
+        //#region Single Convert To Update and Create Dto
+        //CreateMap<ResponseCategoryDto, CreateCategoryDto>().ReverseMap();
+        //CreateMap<ResponseCategoryDto, UpdateCategoryDto>().ReverseMap();
+        //#endregion
     }
 }

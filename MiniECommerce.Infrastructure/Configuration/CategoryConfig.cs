@@ -11,7 +11,7 @@ public class CategoryConfig : IEntityTypeConfiguration<Category>
         builder.HasKey(a=>a.Id).HasName("PK_CTGRY_ID");
 
         builder.Property(a => a.Name).IsRequired().HasMaxLength(60);
-        builder.Property(a => a.Description).HasMaxLength(500);
+        builder.Property(a => a.Description).IsRequired(false).HasMaxLength(500);
 
         builder.HasMany(a => a.Products)
             .WithOne(b => b.Category)
