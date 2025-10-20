@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MiniECommerce.Application.AutoMapper;
-using MiniECommerce.Application.IOC;
+
 using MiniECommerce.Infrastructure.Context;
 
 var builder = WebApplication.CreateBuilder(args);
