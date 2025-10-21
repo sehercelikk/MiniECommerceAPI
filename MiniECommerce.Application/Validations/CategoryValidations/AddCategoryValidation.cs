@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using MiniECommerce.Application.Dtos.CategoryDtos;
+using MiniECommerce.Dtos.CategoryDtos;
 
 namespace MiniECommerce.Application.Validations.CategoryValidations;
 

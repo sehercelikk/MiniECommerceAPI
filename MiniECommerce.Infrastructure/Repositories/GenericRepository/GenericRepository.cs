@@ -7,7 +7,7 @@ namespace MiniECommerce.Infrastructure.Repositories.GenericRepository;
 
 public class GenericRepository<T> : IGenericRepository<T> where T: class, IEntity, new()
 {
-    private readonly ETicaretContext _context;
+    protected readonly ETicaretContext _context;
 
     public GenericRepository(ETicaretContext context)
     {

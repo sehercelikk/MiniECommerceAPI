@@ -1,4 +1,4 @@
-﻿namespace MiniECommerce.Application.Dtos.ProductDtos;
+﻿namespace MiniECommerce.Dtos.ProductDtos;
 
 public class UpdateProductDto
 {

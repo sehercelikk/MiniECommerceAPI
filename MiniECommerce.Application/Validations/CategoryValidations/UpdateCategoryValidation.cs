@@ -1,12 +1,5 @@
 ﻿using FluentValidation;
-using MiniECommerce.Application.Dtos.CategoryDtos;
-using MiniECommerce.Domain.Concrete;
-using System;
-using System.Collections.Generic;
-using System
-    .Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MiniECommerce.Dtos.CategoryDtos;
 
 namespace MiniECommerce.Application.Validations.CategoryValidations;
 

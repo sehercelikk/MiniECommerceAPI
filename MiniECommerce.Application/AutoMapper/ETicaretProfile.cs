@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Azure;
-using MiniECommerce.Application.Dtos.CategoryDtos;
-using MiniECommerce.Application.Dtos.OrderDtos;
-using MiniECommerce.Application.Dtos.ProductDtos;
-using MiniECommerce.Application.Dtos.UserDtos;
+using MiniECommerce.Dtos.CategoryDtos;
+using MiniECommerce.Dtos.OrderDtos;
+using MiniECommerce.Dtos.ProductDtos;
+using MiniECommerce.Dtos.UserDtos;
 using MiniECommerce.Domain.Concrete;
 
 namespace MiniECommerce.Application.AutoMapper;

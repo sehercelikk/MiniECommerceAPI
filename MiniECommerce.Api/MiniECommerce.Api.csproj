@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MiniECommerce.Application\MiniECommerce.Application.csproj" />
+    <ProjectReference Include="..\MiniECommerce.Dtos\MiniECommerce.Dtos.csproj" />
     <ProjectReference Include="..\MiniECommerce.Infrastructure\MiniECommerce.Infrastructure.csproj" />
   </ItemGroup>
 

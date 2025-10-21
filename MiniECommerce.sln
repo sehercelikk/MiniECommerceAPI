@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniECommerce.Domain", "MiniECommerce.Domain\MiniECommerce.Domain.csproj", "{37461030-CF7F-460D-8A39-08B9E1A84E95}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniECommerce.Application", "MiniECommerce.Application\MiniECommerce.Application.csproj", "{8A176411-289F-4FB8-945D-EF02507B6D75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniECommerce.Api", "MiniECommerce.Api\MiniECommerce.Api.csproj", "{64F61AE2-ABE9-479D-9C9B-A758C3C95E9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniECommerce.Dtos", "MiniECommerce.Dtos\MiniECommerce.Dtos.csproj", "{6819AAD3-A329-4669-98AC-57C4338C6A03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{64F61AE2-ABE9-479D-9C9B-A758C3C95E9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64F61AE2-ABE9-479D-9C9B-A758C3C95E9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64F61AE2-ABE9-479D-9C9B-A758C3C95E9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6819AAD3-A329-4669-98AC-57C4338C6A03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6819AAD3-A329-4669-98AC-57C4338C6A03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6819AAD3-A329-4669-98AC-57C4338C6A03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6819AAD3-A329-4669-98AC-57C4338C6A03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿namespace MiniECommerce.Application.Dtos.CategoryDtos;
+﻿namespace MiniECommerce.Dtos.CategoryDtos;
 
 public class ResponseCategoryDto
 {

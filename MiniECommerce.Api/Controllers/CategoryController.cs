@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MiniECommerce.Application.Dtos.CategoryDtos;
+using MiniECommerce.Dtos.CategoryDtos;
 using MiniECommerce.Application.Services.CategoryServices;
-using System.Threading.Tasks;
 
 namespace MiniECommerce.Api.Controllers;
 
@@ -30,7 +29,15 @@ public class CategoryController : ControllerBase
         {
             await _categoryService.UpdateAsync(model);
             return Ok();
+
         }
         return BadRequest();
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteCategory(int id)
+    {
+        await _categoryService.DeleteAsync(id);
+        return Ok();
     }
 }

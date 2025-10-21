@@ -1,4 +1,4 @@
-﻿namespace MiniECommerce.Application.Dtos.OrderDtos;
+﻿namespace MiniECommerce.Dtos.OrderDtos;
 
 public class ResponseOrderDto
 {

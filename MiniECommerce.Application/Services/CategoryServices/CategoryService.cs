@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
-using MiniECommerce.Application.Dtos.CategoryDtos;
+using MiniECommerce.Dtos.CategoryDtos;
 using MiniECommerce.Domain.Concrete;
 using MiniECommerce.Infrastructure.Repositories.CategoryRepository;
 
@@ -22,7 +22,7 @@ public class CategoryService : ICategoryService
 
     public async Task AddAsync(CreateCategoryDto entity)
     {
-        var valid=await _createValidator.ValidateAsync(entity);
+        var valid = await _createValidator.ValidateAsync(entity);
         if (!valid.IsValid)
         {
             // Tüm hataları bir exception ile fırlatabiliriz
@@ -32,9 +32,17 @@ public class CategoryService : ICategoryService
     }
 
 
-    public Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var findEntity = await _categoryRepository.GetAsync(a => a.Id == id);
+        if (findEntity != null)
+        {
+            await _categoryRepository.DeleteAsync(findEntity);
+        }
+        else
+        {
+            throw new Exception("Kayıt Bulunamadı");
+        }
     }
 
     public Task<List<ResponseCategoryDto>> GetAllAsync()

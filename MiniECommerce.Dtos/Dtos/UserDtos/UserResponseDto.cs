@@ -1,4 +1,4 @@
-﻿namespace MiniECommerce.Application.Dtos.UserDtos;
+﻿namespace MiniECommerce.Dtos.UserDtos;
 
 public class UserResponseDto
 {

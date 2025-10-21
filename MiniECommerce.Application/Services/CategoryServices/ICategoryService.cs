@@ -1,6 +1,5 @@
-﻿using MiniECommerce.Application.Dtos.CategoryDtos;
+﻿using MiniECommerce.Dtos.CategoryDtos;
 using MiniECommerce.Application.Services.GenericService;
-using MiniECommerce.Domain.Concrete;
 
 namespace MiniECommerce.Application.Services.CategoryServices;
 
