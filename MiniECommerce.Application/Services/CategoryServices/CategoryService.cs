@@ -11,11 +11,13 @@ public class CategoryService : ICategoryService
     private readonly ICategoryRepository _categoryRepository;
     private readonly IMapper _mapper;
     private readonly IValidator<CreateCategoryDto> _createValidator;
-    public CategoryService(ICategoryRepository categoryRepository, IMapper mapper, IValidator<CreateCategoryDto> createValidator)
+    private readonly IValidator<UpdateCategoryDto> _updateValidator;
+    public CategoryService(ICategoryRepository categoryRepository, IMapper mapper, IValidator<CreateCategoryDto> createValidator, IValidator<UpdateCategoryDto> updateValidator)
     {
         _categoryRepository = categoryRepository;
         _mapper = mapper;
         _createValidator = createValidator;
+        _updateValidator = updateValidator;
     }
 
     public async Task AddAsync(CreateCategoryDto entity)
@@ -40,13 +42,20 @@ public class CategoryService : ICategoryService
         throw new NotImplementedException();
     }
 
-    public Task<ResponseCategoryDto> GetAsync(ResponseCategoryDto entity)
+    public async Task<ResponseCategoryDto> GetAsync(int id)
     {
-        throw new NotImplementedException();
+        var findId = await _categoryRepository.GetAsync(a => a.Id == id);
+        var mapEntity = _mapper.Map<ResponseCategoryDto>(findId);
+        return mapEntity;
     }
 
-    public Task UpdateAsync(UpdateCategoryDto entity)
+    public async Task UpdateAsync(UpdateCategoryDto entity)
     {
-        throw new NotImplementedException();
+        var valid = await _updateValidator.ValidateAsync(entity);
+        if (!valid.IsValid)
+        {
+            throw new ValidationException(valid.Errors);
+        }
+        await _categoryRepository.UpdateAsync(_mapper.Map<Category>(entity));
     }
 }

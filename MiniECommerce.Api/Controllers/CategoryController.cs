@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MiniECommerce.Application.Dtos.CategoryDtos;
 using MiniECommerce.Application.Services.CategoryServices;
+using System.Threading.Tasks;
 
 namespace MiniECommerce.Api.Controllers;
 
@@ -19,5 +20,17 @@ public class CategoryController : ControllerBase
     {
         await _categoryService.AddAsync(model);
         return Ok();
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateCategory(UpdateCategoryDto model)
+    {
+        var findEntity = await _categoryService.GetAsync(model.Id);
+        if (findEntity.Id == model.Id)
+        {
+            await _categoryService.UpdateAsync(model);
+            return Ok();
+        }
+        return BadRequest();
     }
 }
