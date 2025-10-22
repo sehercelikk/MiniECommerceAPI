@@ -45,9 +45,10 @@ public class CategoryService : ICategoryService
         }
     }
 
-    public Task<List<ResponseCategoryDto>> GetAllAsync()
+    public async Task<List<ResponseCategoryDto>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        var categories = await _categoryRepository.GetAllAsync();
+        return _mapper.Map<List<ResponseCategoryDto>>(categories);
     }
 
     public async Task<ResponseCategoryDto> GetAsync(int id)
@@ -60,9 +61,14 @@ public class CategoryService : ICategoryService
     public async Task UpdateAsync(UpdateCategoryDto entity)
     {
         var valid = await _updateValidator.ValidateAsync(entity);
+        var findEntity = await _categoryRepository.GetAsync(a => a.Id == entity.Id);
         if (!valid.IsValid)
         {
             throw new ValidationException(valid.Errors);
+        }
+        if(findEntity ==null)
+        {
+            throw new KeyNotFoundException($"Id {entity.Id} numaralı ürün bulunamadı.");
         }
         await _categoryRepository.UpdateAsync(_mapper.Map<Category>(entity));
     }

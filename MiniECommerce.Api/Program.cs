@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using MiniECommerce.Application.AddDependenciesScoped;
 using MiniECommerce.Application.AutoMapper;
 using MiniECommerce.Application.Validations.CategoryValidations;
-using MiniECommerce.Dtos.CategoryDtos;
 using MiniECommerce.Infrastructure.Context;
 
 var builder = WebApplication.CreateBuilder(args);

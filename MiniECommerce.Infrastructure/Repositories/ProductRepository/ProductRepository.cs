@@ -29,6 +29,8 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
                         CategoryName = a.Name,
                         Description = b.Description,
                         Name = b.Name,
+                        Price=b.Price,
+                        Stock=b.Stock,
                         Id = b.Id,
 
                     };
