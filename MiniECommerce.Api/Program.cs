@@ -25,7 +25,6 @@ builder.Services.AddControllers();
 
 
 builder.Services.AddValidatorsFromAssembly(typeof(AddCategoryValidation).Assembly);
-//builder.Services.AddValidatorsFromAssembly(typeof(CreateProductValidation).Assembly);
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

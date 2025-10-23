@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Repositories\OrderItemRepository\" />
-    <Folder Include="Repositories\UserRepository\" />
     <Folder Include="Repositories\OrderRepository\" />
   </ItemGroup>
 
