@@ -2,6 +2,7 @@
 using FluentValidation;
 using MiniECommerce.Domain.Concrete;
 using MiniECommerce.Dtos.ProductDtos;
+using MiniECommerce.Infrastructure.Repositories.CategoryRepository;
 using MiniECommerce.Infrastructure.Repositories.ProductRepository;
 
 namespace MiniECommerce.Application.Services.ProductServices;
@@ -9,21 +10,28 @@ namespace MiniECommerce.Application.Services.ProductServices;
 public class ProductService : IProductService
 {
     private readonly IProductRepository _productRepository;
+    private readonly ICategoryRepository _categoryRepository;
     private readonly IMapper _mapper;
     private readonly IValidator<CreateProductDto> _createValid;
     private readonly IValidator<UpdateProductDto> _updateValid;
-    public ProductService(IProductRepository productRepository, IMapper mapper, IValidator<CreateProductDto> createValid, IValidator<UpdateProductDto> updateValid)
+    public ProductService(IProductRepository productRepository, IMapper mapper, IValidator<CreateProductDto> createValid, IValidator<UpdateProductDto> updateValid, ICategoryRepository categoryRepository)
     {
         _productRepository = productRepository;
         _mapper = mapper;
         _createValid = createValid;
         _updateValid = updateValid;
+        _categoryRepository = categoryRepository;
     }
 
     public async Task AddAsync(CreateProductDto entity)
     {
         var valid = await _createValid.ValidateAsync(entity);
-        if (valid != null)
+        var findCategory = await _categoryRepository.GetAsync(a => a.Id == entity.CategoryId);
+        if(findCategory ==null)
+        {
+            throw new Exception("Kategori Bulunamadı");
+        }
+        if (!valid.IsValid) 
         {
             throw new ValidationException(valid.Errors);
         }
@@ -68,7 +76,12 @@ public class ProductService : IProductService
     public async Task UpdateAsync(UpdateProductDto entity)
     {
         var findEntity = await _productRepository.GetAsync(a => a.Id == entity.Id);
+        var findCategory = await _categoryRepository.GetAsync(a => a.Id == entity.CategoryId);
         var valid = await _updateValid.ValidateAsync(entity);
+        if(findCategory==null)
+        {
+            throw new Exception("Kategori Bulunamadı");
+        }
         if (!valid.IsValid)
         {
             throw new ValidationException(valid.Errors);
@@ -77,7 +90,6 @@ public class ProductService : IProductService
         {
             throw new KeyNotFoundException($"Id {entity.Id} numaralı ürün bulunamadı.");
         }
-        var updatedProduct = _mapper.Map(entity, findEntity); // mevcut nesneye map'leme
-        await _productRepository.UpdateAsync(updatedProduct);
+        await _productRepository.UpdateAsync(_mapper.Map<Product>(entity));
     }
 }

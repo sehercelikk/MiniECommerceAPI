@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MiniECommerce.Application.AddDependenciesScoped;
 using MiniECommerce.Application.AutoMapper;
 using MiniECommerce.Application.Validations.CategoryValidations;
+using MiniECommerce.Application.Validations.ProductValidations;
 using MiniECommerce.Infrastructure.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +25,7 @@ builder.Services.AddControllers();
 
 
 builder.Services.AddValidatorsFromAssembly(typeof(AddCategoryValidation).Assembly);
+//builder.Services.AddValidatorsFromAssembly(typeof(CreateProductValidation).Assembly);
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
