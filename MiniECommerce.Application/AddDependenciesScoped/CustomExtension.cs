@@ -5,6 +5,7 @@ using MiniECommerce.Application.Services.UserServices;
 using MiniECommerce.Infrastructure.Repositories.CategoryRepository;
 using MiniECommerce.Infrastructure.Repositories.ProductRepository;
 using MiniECommerce.Infrastructure.Repositories.UserRepository;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace MiniECommerce.Application.AddDependenciesScoped;
 
@@ -20,5 +21,7 @@ public static class CustomExtension
 
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IAuthService, AuthService>();
+
+        services.AddScoped<JwtHeader>();
     }
 }
